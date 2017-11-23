@@ -1,0 +1,304 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>测试集</title>
+	<link rel="stylesheet" type="text/css" href="css/comm.css">
+	<link rel="stylesheet" type="text/css" href="css/TestSet.css">
+</head>
+
+<body>
+	<div id="container">
+	<table width="100%" cellspacing="0" cellpadding="0">
+		<tbody>
+			<tr>
+			<td width="32%" valign="top">
+				<div class="head_menu">
+					<table width="100%" cellspacing="0" cellpadding="0">
+						<tbody>
+							<tr>
+								<td>
+									<button class="head_butt" href="javascript:void(0)" onclick="open_form('#form_newTset','#overlay')">创建测试集</button>
+									<button class="head_butt" href="javascript:void(0)" onclick="Del_Tset()" style="background-color: #9F5B61">删除测试集</button>
+								</td>
+								<td align="right">
+									<span>切换项目</span>
+									<select id="projlist">
+										<option value="1">DSP</option>
+										<option value="2">DSP</option>
+									</select>
+								</td>
+							</tr>
+						</tbody>
+					</table>					
+				</div>
+				<!--测试集列表-->
+				<div id="TsetList">
+					<table id="tab_TsetList" width="100%" cellspacing="0" cellpadding="0">
+						<thead>
+							<th width="100px" style="border-left: 1px solid #868A8D;">测试集</th>
+							<th width="50px">创建人</th>
+							<th width="120px">创建时间</th>
+						</thead>
+						<tbody id="tbody_TsetList">
+						</tbody>
+					</table>
+				</div>
+				<div class="head_menu" style="padding-top: 5px;">
+					<table width="100%" cellspacing="0" cellpadding="0">
+						<tbody>
+							<tr>
+								<td>
+									<button id="Fir_page" href="javascript:void(0)" onclick="Topage(1)">.</button>
+									<button id="Pre_page" href="javascript:void(0)" onclick="Nextpage('-')">.</button>
+									<span>第<span id="curr_page">1</span>/<span id="page_num">1</span>页</span>
+									<button id="Next_page" href="javascript:void(0)" onclick="Nextpage('+')">.</button>
+									<button id="Las_page" href="javascript:void(0)" onclick="Topage(0)">.</button>		
+								</td>
+								<td align="right">
+									<select id="filter_key" type="text">
+										<option value="Tset_name">测试集</option>
+										<option value="dtime">创建时间</option>
+										<option value="owner">创建人</option>
+									</select>
+									<input id="filter_value" type="text">
+									<button class="head_butt" href="javascript:void(0)" onclick="filt()" style="margin-right: 0">查找</button>
+								</td>
+							</tr>
+						</tbody>
+					</table>										
+				</div>
+			</td>
+			<td valign="top" style="padding-left: 20px;">
+				<div class="head_menu">					
+					<button class="head_butt" href="javascript:void(0)" onclick="Tset_clear()" style="background-color: #9F5B61">清除</button>
+					<button class="head_butt" href="javascript:void(0)" onclick="Tset_save()">保存</button>
+					<button class="head_butt" href="javascript:void(0)" onclick="open_form('#form_newTset_2','#overlay')">另存为</button>
+					<button class="head_butt" href="javascript:void(0)" onclick="open_form('#form_confirm','#overlay')">添加到任务队列</button>
+				</div>
+				<div class="block">
+					<table width="100%" height="100%" cellspacing="0" cellpadding="0">
+						<tbody >
+							<tr>
+								<td width="55%" rowspan="3">
+									<div style="margin-bottom: 5px;"><b>测试集：</b><span id="Tset_name"></span></div>
+									<div id="Tset_box">
+										<table id="tab_tsc_list" width="100%" cellspacing="0" cellpadding="0">
+										<tbody id="tbody_tsc_list">
+										</tbody>
+										</table>
+									</div>
+								</td>
+								<td valign="top" style="padding-left: 20px;height: 150px">
+									<div><b>测试脚本库：</b></div>
+									<div id="tab_Tst_head">
+										<table width="100%" cellspacing="0" cellpadding="0">
+											<thead>
+												<th width="110px">路径</th>
+												<th width="160px">脚本</th>
+												<th>作者</th>
+											</thead>
+										</table>
+									</div>
+									<div id="tab_Tst_body">
+										<table width="100%" cellspacing="0" cellpadding="0" style="table-layout:fixed;">
+										<tbody id="tbody_Tst">
+										</tbody>
+										</table>
+									</div>
+									<div style="margin-top: 5px;">
+										<button id="add_tsc">添加到测试集</button>
+										<button id="del_tsc">从测试集删除</button>											
+										<button id="update_policy">更新测试策略</button>			
+									</div>	
+									<hr>							
+								</td>
+							</tr>
+							<tr>
+								<td valign="bottom" style="padding-left: 20px; line-height: 24px;">
+									<div><b>测试策略：</b></div>
+									<div>
+										<input type="checkbox" id="policy_continue" class="policy" checked="checked">
+										<span>失败后继续执行</span>
+									</div>
+									<div>
+										<input type="checkbox" id="policy_end" class="policy">
+										<span>失败后测试结束</span>
+									</div>
+									<div>
+										<input type="checkbox" id="policy_retry" class="policy">
+										<span>失败后最多重复</span><input type="text" id="policy_retrynum"><span> 次，失败继续执行</span>
+									</div>
+									<div>
+										<input type="checkbox" id="policy_retry_1" class="policy">
+										<span>失败后最多重复</span><input type="text" id="policy_retrynum_1"><span> 次，失败测试结束</span>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td valign="bottom" style="padding-left: 20px; padding-top:10px; ">
+									<div><b>测试集说明：</b></div>
+									<textarea id="des_tset"></textarea>
+								</td>
+							</tr>
+						</tbody>
+					</table>					
+				</div>
+			</td>
+		</tr></tbody>
+	</table>	
+	<!--遮罩层：用于显示弹层后遮盖下面的页面元素-->
+	<div id="overlay" class="overlay"></div>	
+	<div id="overlay2" class="overlay" style="z-index: 7;"></div>	
+	<!--弹层：输入新测试集名-新建测试集-->	
+	<div id="form_newTset" class="popwindow">
+		<div id="title_form_newTset" class="pop_head">创建新测试集</div>
+		<div class="pop_body">
+			<div>
+				<span>请输入新测试集名称:</span>
+				<input type="text" id="Tset_name_new">
+			</div>			
+			<div class="pop_bottom_butt">
+				<button href="javascript:void(0)" onclick="Add_Tset()">确定</button>	
+				<button href="javascript:void(0)" onclick="CloseForm('#form_newTset','#overlay')">取消</button>					
+			</div>
+		</div>
+	</div>
+	<!--弹层：输入新测试集名-另存测试集-->	
+	<div id="form_newTset_2" class="popwindow">
+		<div id="title_form_newTset_2" class="pop_head">创建新测试集</div>
+		<div class="pop_body">
+			<div>
+				<span>请输入新测试集名称:</span>
+				<input type="text" id="Tset_name_new_2">
+			</div>			
+			<div class="pop_bottom_butt">
+				<button href="javascript:void(0)" onclick="Tset_saveas()">确定</button>	
+				<button href="javascript:void(0)" onclick="CloseForm('#form_newTset_2','#overlay')">取消</button>					
+			</div>
+		</div>
+	</div>
+	<!--弹层：编辑数据文件-->	
+	<div id="form_TCF" class="popwindow">
+		<div id="title_form_TCF" class="pop_head">测试环境及过程数据配置</div>
+		<div class="pop_body">
+			<table width="100%" cellspacing="0" cellpadding="0">
+			<tbody><tr style="height: 25px">
+				<td>
+					项目：<span id="proj_TCFForm"></span>
+				</td>
+				<td align="right">
+					<img src="img/additem.png" title="添加" href="javascript:void(0)" onclick="TCF_add()">
+					<img src="img/delitem.png" title="删除" href="javascript:void(0)" onclick="TCF_del()">
+					<img src="img/edititem.png" title="编辑" href="javascript:void(0)" onclick="TCF_edit()">
+				</td>
+			</tr></tbody>
+			</table>
+			<div id="TCF_box">
+				<table width="100%" cellspacing="0" cellpadding="0">
+					<tbody id="tbody_tcf">
+						<tr id="1">
+							<td class="tcf_key">aaa11111</td>
+							<td>12343422222</td>
+						</tr>
+						<tr id="2">
+							<td class="tcf_key">bbbb</td>
+							<td>1123</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div>说明：此处配置的数据将被测试脚本在执行过程中调用</div>	
+			
+			<div class="pop_bottom_butt">				
+				<button href="javascript:void(0)" onclick="TCF_save()">保存</button>	
+				<button href="javascript:void(0)" onclick="CloseForm('#form_TCF','#overlay')">取消</button>					
+			</div>
+		</div>
+	</div>
+	<!--二级弹层：测试参数修改与新增-->
+	<div id="form_TCF_add" class="popwindow" style="z-index: 9">
+		<div id="title_form_TCF_add" class="pop_head">编辑测试过程数据</div>		
+		<div class="pop_body">
+			<table cellspacing="0" cellpadding="0" border="0">
+				<tbody>	
+					<tr><td>
+						参数名：<input type="text" id="tcf_key" style="width:150px">
+					</td></tr>
+					<tr><td>
+						参数值：<input type="text" id="tcf_value" style="width:240px">
+					</td></tr>
+					<tr><td valign="top" align="center">	
+						<button class="form_butt" id="butt_saveTCF" href="javascript:void(0)" onclick="save_TCF_para()">保存</button>
+						<button class="form_butt" href="javascript:void(0)" onclick="CloseForm('#form_TCF_add','#overlay2')">取消</button>
+					</td></tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<!--弹层：警告-->
+	<div id="form_confirm" class="popwindow">
+		<div id="title_form_confirm" class="pop_head">友好提醒</div>
+		<div class="pop_body" style="padding:10px 10px 10px 10px;">
+			<table cellspacing="0" cellpadding="0"><tbody>
+				<tr>
+					<td valign="bottom">
+						<img src="img/alert.jpg" style="margin-right: 10px;" height="30px" width="30px">
+					</td>
+					<td><span>在添加到任务队列前是否需要编辑测试环境配置文件？</span></td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center">
+						<button class="form_butt" href="javascript:void(0)" onclick="save_addtask('y')">需要</button>
+						<button class="form_butt" href="javascript:void(0)" onclick="save_addtask('n')">不需要</button>
+						<button class="form_butt" href="javascript:void(0)" onclick="CloseForm('#form_confirm','#overlay')">取消</button>
+					</td>
+				</tr>
+			</tbody></table>
+		</div>
+	</div>
+	<!--弹层：警告-->
+	<div id="form_confirm_2" class="popwindow">
+		<div id="form_confirm_2_title" class="pop_head">友好提醒</div>
+		<div class="pop_body">
+			<table cellspacing="0" cellpadding="0"><tbody>
+				<tr>
+					<td>
+						<img src="img/alarm.jpg" style="margin-right: 10px;" height="30px" width="30px">
+					</td>
+					<td>删除测试集为不可逆操作，确认要删除测试集吗？</td>
+				</tr>
+				<tr>
+					<td align="center" colspan="2">
+						<button href="javascript:void(0)" onclick="toDelTset()">确定</button>
+						<button href="javascript:void(0)" onclick="CloseForm('#form_confirm_2','#overlay')">放弃</button>
+					</td>
+				</tr>
+			</tbody></table>
+		</div>
+	</div>
+	<!--弹层：警告-->
+	<div id="form_alert" class="popwindow">
+		<div id="form_alert_title" class="pop_head">友好提醒</div>
+		<div class="pop_body" style="padding:10px 10px 10px 10px;">
+			<table cellspacing="0" cellpadding="0"><tbody>
+				<tr>
+					<td valign="bottom">
+						<img src="img/alarm.jpg" style="margin-right: 10px;" height="30px" width="30px">
+					</td>
+					<td><span id="alert_mess"></span></td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center">
+						<button class="form_butt" href="javascript:void(0)" onclick="CloseForm('#form_alert','#overlay')">确定</button>
+					</td>
+				</tr>
+			</tbody></table>
+		</div>
+	</div>
+	</div><!--用于结束container-->
+</body>
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="js/comm.js"></script>
+<script type="text/javascript" src="js/TestSet.js"></script>
+</html>

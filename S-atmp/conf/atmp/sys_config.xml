@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?><atmp-config>
+	<Browser>
+		<IE>D:\\java\\Pub_lib\\selenium-2.48.2\\IEDriverServer.exe</IE>
+		<Chrome>D:\\java\\Pub_lib\\selenium-2.48.2\\chromedriver.exe</Chrome>
+		<Firefox>*firefox C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe"</Firefox>
+	</Browser>
+	<DB_conf>
+		<IPaddr>192.168.56.15</IPaddr>
+		<Port>3306</Port>
+		<DBname>atmp</DBname>
+		<Usrname>atmpadmin</Usrname>
+		<Passwd>123</Passwd>
+	</DB_conf>
+	<LDAP_conf>
+		<host>172.16.8.1</host> 
+		<port>389</port> 
+		<domain>@tech.cig.com.cn</domain> 
+		<admin>sunwanxing</admin> 	
+		<pwd>Swx@123</pwd>
+		<last_sync_time></last_sync_time>
+		<BaseDN>
+			<BD0>OU=综合管理部,OU=车慧,OU=新意互动</BD0>
+			<BD1>OU=综合管理部,OU=车慧,OU=新意互动</BD1>
+		</BaseDN>
+	</LDAP_conf>
+	<Mail_conf>
+		<smtpHost>mail.hd.cig.com.cn</smtpHost>
+		<account>asws@hd.cig.com.cn</account>
+		<passwd>NDU886mckJ</passwd>
+		<tls>false</tls>
+		<ssl>false</ssl>
+		<port>25</port>
+		<auth>true</auth>
+	</Mail_conf>
+	</atmp-config>

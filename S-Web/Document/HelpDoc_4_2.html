@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>帮助文档_脚本开发指南</title>
+	<link rel="stylesheet" type="text/css" href="../css/comm.css">
+	<link rel="stylesheet" type="text/css" href="../css/help.css">
+</head>
+
+<body>
+	<div class="Charpter_body">
+		<a href="HelpDoc_4.html">返回上一级目录</a>
+		<hr>
+		<div style="height: 450px;padding-left: 20px;">
+			<div class="Charpter_sub_title">脚本与数据文件的上传：</div>
+			<p>
+				用户在本地完成测试脚本开发和调试后可以在系统页面上将编译后的Java类（.class）文件上传到服务器，上传时可以一次选择多个文件，但要求必须位于同一个目录下，上传的文件最大不能超过10M。上传脚本时必须指定所属的项目和模块
+			</p>
+			<p>
+				用户在上传脚本文件的同时也可以将额外的测试数据文件（用于数据驱动等测试需求，由脚本直接读取使用）上传到服务器，但要求数据文件的名称（不含后缀）与该脚本相同。
+			</p>
+			<div class="Charpter_sub_title">脚本的管理</div>
+			<p>
+				上传到服务器的脚本可以被用来组成测试集并生成任务，每个脚本都被重复调用
+			</p>
+			<p>
+				脚本也可以被删除，但是由于操作不可逆，所以删除前需要仔细确认，被测试集引用的脚本不能被删除。
+			</p>
+			<p>
+				测试脚本拥有'使用状态'和'配置文件'两个字段，用来标明脚本是否被使用，以及脚本是否拥有对应的数据文件
+			</p>
+		</div>
+		<div align="center">
+			<hr>
+			<a href="HelpDoc_4_1.html">首页</a>
+			|
+			<a href="HelpDoc_4_1.html">上一页</a>
+			|
+			<a href="HelpDoc_4_3.html">下一页</a>
+			|
+			<a href="HelpDoc_4_4.html">尾页</a>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript"> 
+	$(document).ready(function(){ 
+		$("li a",parent.document).css("background-color","transparent");
+		$("#HelpDoc_4_2",parent.document).css("background-color","#4691B4");
+	});
+</script>
+</html>

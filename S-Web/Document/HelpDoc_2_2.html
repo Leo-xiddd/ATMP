@@ -1,0 +1,93 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>帮助文档_用户使用说明</title>
+	<link rel="stylesheet" type="text/css" href="../css/comm.css">
+	<link rel="stylesheet" type="text/css" href="../css/help.css">
+</head>
+
+<body>
+	<div class="Charpter_body">
+		<a href="HelpDoc_2.html">返回上一级目录</a>
+		<hr>
+		<div style="height: 465px;">
+			<p>
+				<b>上传</b>：用户在本地完成测试脚本的开发和调试后可以将编译后的文件（例如Java脚本为.class类文件）上传到服务器的指定目录下（通过项目和模块确定，见2.1章节）。上传脚本时可以一次选择多个文件，但必须位于同一个目录下，上传的文件最大不能超过10M。上传脚本的步骤如下图
+			</p>
+			<p>
+				<b>数据文件</b>：上传脚本的同时也可以将用户自定义的测试数据文件（用于数据驱动等需求，将由脚本直接读取使用）上传到服务器，但要求是该数据文件必须为文本格式（如.txt,.xml等），文件名称（不含后缀）必须与脚本相同，且上传到同一个目录下，拥有数据文件的脚本，在'配置文件'字段标注为'有'。
+			</p>
+			<p>
+				<b>删除</b>：上传后的脚本目录将按照项目、模块分类显示在页面上。上传后的脚本也可以被删除，但该操作是不可逆的，删除需要慎重，被测试集引用的脚本不能被删除，被测试集引用的脚本在'使用状态'字段被设置为'被调用'，否则为'闲置'。
+			</p>
+			<div>
+				<table width="100%" cellspacing="0" cellpadding="0">
+					<tbody>
+						<tr>
+							<td width="20px"></td>
+							<td valign="top" style="padding-left: 5px;padding-right: 5px">
+								<div style="padding:8px;border:1px solid;width: 200px;height: 257px;">
+									<p style="line-height: 20px;text-indent: 0em;margin: 0px">
+										1.&nbsp;点击'上传脚本'按钮，打开上传窗口。
+									</p>
+									<div style="text-align: center">
+										<img src="img/2_2_1.png" width="184px" height="220px">
+									</div>
+								</div>
+							</td>
+							<td valign="top" style="padding-left: 5px;padding-right: 5px">
+								<div style="padding:8px;border:1px solid;width: 200px;height: 257px;">
+									<p style="line-height: 20px;text-indent: 0em;margin: 0px">
+										2.&nbsp;指定上传的项目和模块，点击'选择脚本'按钮（红框）打开文件选择器。
+									</p>
+									<div style="text-align: center">
+										<img src="img/2_2_2.png" width="184px" height="185px">
+									</div>
+								</div>
+							</td>
+							<td valign="top" style="padding-left: 5px;padding-right: 5px">
+								<div style="padding:8px;border:1px solid;width: 200px;height: 257px;">
+									<p style="line-height: 20px;text-indent: 0em;margin: 0px">
+										3.&nbsp;选择的文件会显示在上传列表中，点击删除按钮可以移除选中的文件。
+									</p>
+									<div style="text-align: center">
+										<img src="img/2_2_3.png" width="184px" height="223px">
+									</div>
+								</div>
+							</td>
+							<td valign="top" style="padding-left: 5px;padding-right: 5px">
+								<div style="padding:8px;border:1px solid;width: 200px;height: 257px;">
+									<p style="line-height: 20px;text-indent: 0em;margin: 0px">
+										4.&nbsp;点击上传按钮上传文件，成功后会弹出提示并显示在页面（数据文件不显示）。删除脚本时会弹出提醒信息。
+									</p>
+									<div style="text-align: center">
+										<img src="img/2_2_4.png" width="184px" height="166px">
+									</div>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>						
+		</div>
+		<div align="center">
+			<hr>
+			<a href="HelpDoc_2_1.html">首页</a>
+			|
+			<a href="HelpDoc_2_1.html">上一页</a>
+			|
+			<a href="HelpDoc_2_3.html">下一页</a>
+			|
+			<a href="HelpDoc_2_5.html">尾页</a>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript"> 
+	$(document).ready(function(){ 
+		$("li a",parent.document).css("background-color","transparent");
+		$("#HelpDoc_2_2",parent.document).css("background-color","#4691B4");
+	});
+</script>
+</html>

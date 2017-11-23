@@ -1,0 +1,300 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>测试脚本</title>
+	<link rel="stylesheet" type="text/css" href="css/comm.css">
+	<link rel="stylesheet" type="text/css" href="css/jquery.treeview.css">
+	<link rel="stylesheet" type="text/css" href="css/TestScript.css">
+</head>
+
+<body>
+	<div id="container">
+	<table width="100%" cellspacing="0" cellpadding="0">
+		<tbody><tr>
+			<td width="18%" valign="top">
+				<div>
+					<button class="head_butt" href="javascript:void(0)" onclick="proj_manage()">项目管理</button>
+					<button class="head_butt" href="javascript:void(0)" onclick="module_manage()">模块管理</button>
+				</div>
+				<!--项目树-->
+				<div id="treebox">
+					<ul id="treelist" class="filetree">
+					</ul>
+				</div>		
+			</td>
+			<td valign="top" style="padding-left: 40px;">
+				<table width="100%" cellspacing="0" cellpadding="0">
+					<tbody><tr>
+						<td>
+							<button class="head_butt" href="javascript:void(0)" onclick="uploadTS()">上传脚本</button>
+							<button class="head_butt" href="javascript:void(0)" onclick="ToDel_TS()" style="background-color: #9F5B61">删除脚本</button>
+							<button class="head_butt" href="javascript:void(0)" onclick="editTCF()">编辑测试数据配置文件</button>
+						</td>
+						<td align="right">
+							<select id="filter_key" type="text">
+								<option value="module">模块</option>
+								<option value="ts">脚本</option>
+								<option value="author">作者</option>
+								<option value="ul_time">上传时间</option>
+								<option value="lok">使用状态</option>
+								<option value="tcf_exit">配置文件</option>
+							</select>
+							<input id="filter_value" type="text">
+							<button class="head_butt" href="javascript:void(0)" onclick="filt()">查找</button>
+						</td>
+					</tr></tbody>
+				</table>
+
+				<table id="tab_tslist" width="100%" cellspacing="0" cellpadding="0">
+					<thead>
+						<th width="30px" style="border-left: 1px solid #868A8D;">ID</th>
+						<th width="100px">编号</th>
+						<th width="120px">模块</th>
+						<th width="160px">脚本</th>
+						<th width="60px">作者</th>
+						<th width="100px">上传时间</th>
+						<th width="60px">使用状态</th>
+						<th width="40px">配置文件</th>
+					</thead>
+					<tbody id="tbody_tslist">
+					</tbody>
+				</table>
+				<div id="pages">
+					<button id="Fir_page" href="javascript:void(0)" onclick="Topage(1)">.</button>
+					<button id="Pre_page" href="javascript:void(0)" onclick="Nextpage('-')">.</button>
+					<span>第<span id="curr_page">1</span>/<span id="page_num">1</span>页</span>
+					<button id="Next_page" href="javascript:void(0)" onclick="Nextpage('+')">.</button>
+					<button id="Las_page" href="javascript:void(0)" onclick="Topage(0)">.</button>
+				</div>
+			</td>
+		</tr></tbody>
+	</table>	
+	<!--遮罩层：用于显示弹层后遮盖下面的页面元素-->
+	<div id="overlay" class="overlay"></div>	
+	<div id="overlay2" class="overlay" style="z-index: 7;"></div>	
+	<!--弹层：项目管理-->
+	<div id="form_pm" class="popwindow">
+		<div id="title_form_pm" class="pop_head">项目管理</div>
+		<div class="pop_body">
+			<table cellspacing="0" cellpadding="0" border="0" width="220px">
+			<tbody>		
+			<tr style="height: 20px">
+				<td><label>已有项目：</label></td>
+				<td align="right">
+					<img src="img/addpm.png" title="添加" href="javascript:void(0)" onclick="Add_proj()" width="18px" height="18px">
+					<img src="img/delpm.png" title="删除" href="javascript:void(0)" onclick="Del_proj()" width="18px" height="18px" style="margin-left: 5px;margin-right: 5px;">
+				</td>
+			<tr>
+				<td colspan="2">
+					<select id="projs" multiple="multiple" size="6"  class="mult_select"></select>
+				</td>
+			</tr>
+			<tr>
+				<td align="center" colspan="2">
+					<button href="javascript:void(0)" onclick="SavePM('pm')" class="form_butt">关闭</button>
+				</td>
+			</tr>
+			</tbody>
+			</table>
+		</div>
+	</div>
+
+	<!--弹层：模块管理-->
+	<div id="form_mm" class="popwindow">
+		<div id="title_form_mm" class="pop_head">模块管理</div>		
+		<div class="pop_body">
+			<table cellspacing="0" cellpadding="0" border="0">
+			<tbody>	
+			<tr height="25px">
+				<td colspan=2 valign="top">
+					<label for="projs2">请选择项目：</label>
+					<select id="projs2" style="width:180px"></select>
+				</td>
+			</tr>
+			<tr style="height:20px">
+				<td><label for="modules">已有模块：</label></td>
+				<td align="right">
+					<img src="img/addpm.png" title="添加" href="javascript:void(0)" onclick="Add_module()" width="18px" height="18px">
+					<img src="img/delpm.png" title="删除" href="javascript:void(0)" onclick="Del_module()" width="18px" height="18px" style="margin-left: 5px;margin-right: 5px;">
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2"><select id="modules" multiple="multiple" size="6" class="mult_select"></select></td>
+			</tr>
+			<tr>
+				<td align="center" colspan="2">
+					<button href="javascript:void(0)" onclick="SavePM('mm')" class="form_butt">关闭</button>
+				</td>
+			</tr>
+			</tbody>
+			</table>
+		</div>
+	</div>
+	<!--弹层：上传脚本-->
+	<div id="form_uploadTS" class="popwindow">
+		<div id="title_form_uploadTS" class="pop_head">上传测试脚本</div>
+		<div class="pop_body">
+			<table width="100%" cellspacing="0" cellpadding="0">
+				<tbody>
+				<tr style="height：25px">
+					<td>
+						<span>项目：</span>
+						<select id="projlist_upl">
+							<option>qwqwqwqw</option>
+						</select>
+					</td>
+					<td align="right">
+						<span>模块：</span>
+						<select id="modulelist_upl">
+							<option>qwqwqwqw</option>
+						</select>
+					</td>
+				</tr>
+				<tr style="height: 20px">
+					<td>待上传脚本：</td>
+					<td align="right">
+						<input type="file" id="file_selector" onchange="addFile()" multiple="multiple">
+						<img src="img/openfile.png" title="选择脚本" href="javascript:void(0)" onclick="chosefile()" width="22px" height="22px">
+						<img src="img/removefile.png" title="移除脚本" href="javascript:void(0)" onclick="Del_file()" width="22px" height="22px" style="margin-left: 10px;margin-right: 5px;margin-top: 5px">
+					</td>
+				</tr>
+			</tbody>
+			</table>
+			<div id="upl_box">
+				<table id="tab_filelist" width="300px" cellspacing="0" cellpadding="0">
+					<tbody id="tbody_filelist"></tbody>
+				</table>
+			</div>
+			<div style="text-align: center">
+				<button class="form_butt" href="javascript:void(0)" onclick="upload()" style="margin-right: 20px;">上传</button>
+				<button class="form_butt" href="javascript:void(0)" onclick="CloseForm('#form_uploadTS','#overlay')">取消</button>
+			</div>
+		</div>
+	</div>
+	<!--弹层：编辑数据文件-->	
+	<div id="form_TCF" class="popwindow">
+		<div id="title_form_TCF" class="pop_head">测试环境及过程数据配置</div>
+		<div class="pop_body">
+			<table width="100%" cellspacing="0" cellpadding="0">
+				<tbody><tr style="height: 25px">
+					<td>
+						项目：<span id="proj_TCF"></span>
+					</td>
+					<td align="right">
+						<img src="img/additem.png" title="添加" href="javascript:void(0)" onclick="TCF_add()">
+						<img src="img/delitem.png" title="删除" href="javascript:void(0)" onclick="TCF_del()">
+						<img src="img/edititem.png" title="编辑" href="javascript:void(0)" onclick="TCF_edit()">
+					</td>
+				</tr></tbody>
+			</table>
+			<div id="TCF_box">
+				<table width="100%" cellspacing="0" cellpadding="0">
+					<tbody id="tbody_tcf">
+						<tr id="1">
+							<td class="tcf_key">aaa11111</td>
+							<td>12343422222</td>
+						</tr>
+						<tr id="2">
+							<td class="tcf_key">bbbb</td>
+							<td>1123</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div>说明：此处配置的数据将被测试脚本在执行过程中调用</div>	
+			
+			<div class="pop_bottom_butt">				
+				<button href="javascript:void(0)" onclick="TCF_save()">保存</button>	
+				<button href="javascript:void(0)" onclick="CloseForm('#form_TCF','#overlay')">取消</button>					
+			</div>
+		</div>
+	</div>
+	<!--弹层：警告-->
+	<div id="form_alert" class="popwindow" style="z-index: 100">
+		<div id="form_alert_title" class="pop_head">友好提醒</div>
+		<div class="pop_body" style="padding:10px 10px 10px 10px;">
+			<table cellspacing="0" cellpadding="0"><tbody>
+				<tr>
+					<td valign="bottom">
+						<img src="img/alert.jpg" style="margin-right: 10px;">
+					</td>
+					<td><span id="alert_mess"></span></td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center">
+						<button class="form_butt" href="javascript:void(0)" onclick="CloseForm('#form_alert','#overlay')">确定</button>
+					</td>
+				</tr>
+			</tbody></table>
+		</div>
+	</div>
+
+	<!--二级弹层：输入项目或模块名-->
+	<div id="form_confirm" class="popwindow" style="z-index: 9">
+		<div id="title_form_confirm" class="pop_head">添加新<span class="obj"></span></div>		
+		<div class="pop_body">
+			<table cellspacing="0" cellpadding="0" border="0">
+				<tbody>	
+					<tr><td>
+						<label for="obj_name">新<span class="obj"></span>名：</label><input type="text" id="obj_name">
+					</td></tr>
+					<tr><td>
+						<label for="tag">英文标签：</label><input type="text" id="tag" style="margin-top: 5px;">
+						<br>（请使用简短的英文标识）
+					</td></tr>
+					<tr><td valign="top" align="center">	
+						<button class="form_butt" id="butt_confirm" href="javascript:void(0)" onclick="confirm()">确定</button>
+						<button class="form_butt" href="javascript:void(0)" onclick="CloseForm('#form_confirm','#overlay2')">关闭</button>
+					</td></tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<!--二级弹层：测试参数修改与新增-->
+	<div id="form_TCF_add" class="popwindow" style="z-index: 9">
+		<div id="title_form_TCF_add" class="pop_head">编辑测试过程数据</div>		
+		<div class="pop_body">
+			<table cellspacing="0" cellpadding="0" border="0">
+				<tbody>	
+					<tr><td>
+						参数名：<input type="text" id="tcf_key" style="width:150px">
+					</td></tr>
+					<tr><td>
+						参数值：<input type="text" id="tcf_value" style="width:240px">
+					</td></tr>
+					<tr><td valign="top" align="center">	
+						<button class="form_butt" id="butt_saveTCF" href="javascript:void(0)" onclick="save_TCF_para()">保存</button>
+						<button class="form_butt" href="javascript:void(0)" onclick="CloseForm('#form_TCF_add','#overlay2')">取消</button>
+					</td></tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<!--弹层：警告-->
+	<div id="form_confirm_2" class="popwindow">
+		<div id="form_confirm_2_title" class="pop_head">友好提醒</div>
+		<div class="pop_body">
+			<table cellspacing="0" cellpadding="0"><tbody>
+				<tr>
+					<td rowspan="2">
+						<img src="img/alarm.jpg" style="margin-right: 10px;">
+					</td>
+					<td id="warn_mess">删除脚本操作将直接删除服务器上的脚本文件以及数据配置文件，<br>为不可逆操作，确定要删除？</td>
+				</tr>
+				<tr>
+					<td align="center">
+						<button href="javascript:void(0)" onclick="Del_TS()">确定</button>
+						<button href="javascript:void(0)" onclick="CloseForm('#form_confirm_2','#overlay')">放弃</button>
+					</td>
+				</tr>
+			</tbody></table>
+		</div>
+	</div>
+	</div><!--用于结束container-->
+</body>
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="js/comm.js"></script>
+<script type="text/javascript" src="js/jquery.treeview.js"></script>
+<script type="text/javascript" src="js/TestScript.js"></script>
+</html>

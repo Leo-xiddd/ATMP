@@ -1,0 +1,232 @@
+body{
+	margin:0px;
+	border:0px;
+	overflow-x : hidden;
+	background-color: #FFFFFF;
+}
+input{
+	font-family:'微软雅黑';	
+	font-size: 12px;
+	padding-left: 5px;
+}
+button{
+	font-family:'微软雅黑';	
+	font-size: 12px;
+}
+select{
+	font-family:'微软雅黑';	
+	font-size: 12px;
+}
+.grey_text{
+	font-family:'微软雅黑';	
+	font-size: 12px;
+	color: #868A8D;
+}
+#container{
+	padding-top:17px;
+	width: 97%;
+	margin-right: auto;
+	margin-left: auto;
+}
+.pop_bottom_butt{
+	display:block;
+	position:relative;
+	top:15px;
+	margin-bottom: 15px;
+	text-align:center;
+}
+.pop_bottom_butt button{
+	margin-left:20px;
+	margin-right:20px;
+	width: 60px;
+	height:25px;
+	border-radius: 5px;
+}
+.form_butt{
+	width: 60px;
+	height:25px;
+	border-radius: 5px;
+}
+.module_butt{
+	font-family:'微软雅黑';	
+	font-size: 12px;
+	border-radius:5px;
+	border:1px outset #BDD9E5;
+	background-color:#37A4A4;
+	height:25px;
+	margin-right:8px;
+	color:#FFFFFF;
+}
+.th_butt{
+	font-family:'微软雅黑';	
+	font-size: 12px;
+	width:100%;
+	height: 25px;
+	border:1px outset;
+	background-color: #1B7098;
+	color: #FFFFFF;
+	font-weight: 600;
+}
+#Userlist{
+	display:block;
+	position:relative;
+	top:10px;
+}
+#tab_usrlist{
+	border-right: 1px solid #868A8D;
+	border-top: 1px solid #868A8D;
+}
+#tbody_usrlist th{
+	border-left:1px solid #868A8D;
+}
+#tbody_usrlist tr{
+	background-color: #FFFFFF;
+}
+#tbody_usrlist td{
+	font-family:'微软雅黑';	
+	font-size: 12px;
+	border-bottom:1px solid #868A8D;
+	border-left:1px solid #868A8D;
+	line-height:25px;
+	padding-left:5px;
+	padding-right:5px;
+	height:25px;
+	text-align:center;
+}
+#form_ldap_conf{
+	top:12%;
+	left:8%;
+	width: 820px;
+}
+#ldap_BD{
+	width:650px;
+	margin-top:10px;
+}
+#userinfo_table input{
+	width:180px;
+	padding-left:4px;
+}
+#userinfo_table select{
+	width:188px;
+	padding-left:4px;
+}
+#user_filter{
+	width:180px;
+	padding-left:4px;
+}
+#form_input_BaseDN{
+	top:12%;
+	left:8%;
+}
+#pages{
+	text-align:right;
+	font-family:'微软雅黑';
+	font-size:12px;
+	margin-top:20px;
+	margin-right:10px;
+}
+#Fir_page{
+	height: 22px;
+	width: 22px;
+	/*background-color: transparent;*/
+	background: url(../img/fpage.jpg);
+	color: transparent;
+	background-repeat:no-repeat;
+	background-size:14px 14px;
+	background-position:center;
+}
+#Pre_page{
+	height: 22px;
+	width: 22px;
+	/*background-color: transparent;*/
+	background: url(../img/ppage.jpg);
+	color: transparent;
+	background-repeat:no-repeat;
+	background-size:14px 14px;
+	background-position:center;
+}
+#Next_page{
+	height: 22px;
+	width: 22px;
+	/*background-color: transparent;*/
+	background: url(../img/npage.jpg);
+	color: transparent;
+	background-repeat:no-repeat;
+	background-size:14px 14px;
+	background-position:center;
+}
+#Las_page{
+	height: 22px;
+	width: 22px;
+	background-color: red;
+	background: url(../img/lpage.jpg);
+	color: transparent;
+	background-repeat:no-repeat;
+	background-size:14px 14px;
+	background-position:center;
+}
+#form_UserInfo{
+	top:10%;
+	left:30%;
+}
+.head_btc_highlight{
+	background-color:#37A4A4;
+}
+.head_btc_red{
+	background-color:#9F5B61;
+}
+.head_btc_deep{
+	background-color:#295669;
+}
+.module_title{
+	height: 22px;
+	width: 120px;
+	font-family:'微软雅黑';
+	font-size: 12px;
+	padding-left: 10px;
+	line-height: 22px;
+	border:1px outset #BDD9E5;
+	background-color:#4B8AA0;
+	color: #FFFFFF;	
+	border-bottom: 0px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+#tab_purviewlist{
+	font-family:'微软雅黑';
+	font-size: 12px;
+	margin-top: 15px;
+	margin-bottom: 10px;
+	border-top: 1px solid #868A8D;
+}
+#tab_purviewlist td{
+	height: 35px;
+}
+#tab_purviewlist input{
+	margin-left: 20px;
+}
+#form_confirm{
+	top:15%;
+	left:35%;
+	line-height: 23px;
+}
+#form_confirm button{
+	border:2px outset;
+	border-radius: 5px;
+	margin-top: 15px;
+	margin-left: 10px;
+	margin-right: 10px;
+	width: 60px;
+	height: 25px;
+}
+.block{
+	height: 490px;
+	width:90%;
+	padding: 20px;
+	padding-top: 10px;
+	margin-bottom: 10px;
+	background-color: #F7F7F7;
+	border:1.5px outset #D1D1D1;
+	font-size: 12px;
+	font-family:'微软雅黑';
+}

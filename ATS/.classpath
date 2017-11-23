@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="lib/log4j-1.2.16.jar"/>
+	<classpathentry kind="lib" path="lib/mysql-connector-java-5.1.34-bin.jar"/>
+	<classpathentry kind="lib" path="lib/mysql.jar"/>
+	<classpathentry kind="lib" path="lib/selenium-java-2.48.2.jar"/>
+	<classpathentry kind="lib" path="lib/org.json.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/selenium"/>
+	<classpathentry kind="lib" path="lib/atmp_ats.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

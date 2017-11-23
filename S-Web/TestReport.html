@@ -1,0 +1,146 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>测试报告</title>
+	<link rel="stylesheet" type="text/css" href="css/comm.css">
+	<link rel="stylesheet" type="text/css" href="css/TestReport.css">
+</head>
+
+<body>
+	<div id="container">
+	<table width="100%" cellspacing="0" cellpadding="0">
+		<tbody><tr>
+			<td width="35%" valign="top">
+				<table width="100%" cellspacing="0" cellpadding="0">
+					<tbody><tr>
+						<td valign="top">
+							<button class="head_butt" href="javascript:void(0)" onclick="Del_TR()" style="background-color: #9F5B61">删除</button>
+						</td>
+						<td align="right">
+							<select id="filter_key" type="text">
+								<option value="creattime">报告创建时间</option>
+								<option value="trname">测试报告</option>
+								<option value="owner">测试人</option>
+								<option value="result">测试结果</option>
+							</select>
+							<input id="filter_value" type="text">
+							<button class="head_butt" href="javascript:void(0)" onclick="filt()" style="margin-right: 0">查找</button>
+						</td>
+					</tr></tbody>
+				</table>
+				<table id="tab_TRList" width="100%" cellspacing="0" cellpadding="0">
+					<thead>
+						<th width="130px" style="border-left: 1px solid #868A8D;">报告创建时间</th>
+						<th width="150px">测试报告</th>
+						<th width="50px">测试人</th>
+						<th width="50px">测试结果</th>
+					</thead>
+					<tbody id="tbody_TRList">
+					</tbody>
+				</table>
+
+				<div id="TR_bottom_menu" >
+					<button id="Fir_page" href="javascript:void(0)" onclick="Topage(1)">.</button>
+					<button id="Pre_page" href="javascript:void(0)" onclick="Nextpage('-')">.</button>
+					<span>第<span id="curr_page">1</span>/<span id="page_num">1</span>页</span>
+					<button id="Next_page" href="javascript:void(0)" onclick="Nextpage('+')">.</button>
+					<button id="Las_page" href="javascript:void(0)" onclick="Topage(0)">.</button>
+				</div>							
+			</td>
+			<td valign="top" style="padding-left: 30px;">
+				<div class="block">
+					<div>
+						<span id="rpt_title"><b><span id="proj"></span>测试报告</b></span>（测试集：<span id="testset"></span>）
+					</div>
+					<hr>
+					<table width="100%" cellspacing="0" cellpadding="0">
+						<tbody>
+							<tr style="height: 26px">
+								<td><b>任务编号：</b><span id="Ttask_name"></span></td>
+								<td><b>测试人：</b><span id="owner"></span></td>
+								<td><b>测试结论：</b><span id="result"></span></td>
+							</tr>
+							<tr style="height: 26px">
+								<td>
+									<b>测试开始时间：</b><span id="starttime"></span>
+								</td>
+								<td>
+									<b>测试结束时间：</b><span id="endtime"></span>
+								</td>
+								<td>
+									<b>测试耗时：</b><span id="timeresume"></span>
+								</td>
+							</tr>
+							<tr style="height: 26px">
+								<td colspan="3">
+									<b>测试概要：</b>本次测试共执行脚本<span id="num_ts"></span>条，测试失败<span id="num_ts_fail"></span>条，出现异常错误<span id="num_ts_error"></span>条，执行通过率为<span id="rate_ts_pass"></span>。
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<hr>
+					<div><b>测试执行记录：</b></div>
+					<table id="tab_testrecord" width="100%" cellspacing="0" cellpadding="0">
+						<thead>
+							<th width="30px" style="border-left: 1px solid #868A8D;">No.</th>
+							<th width="100px">测试脚本</th>
+							<th width="160px">测试说明</th>
+							<th width="230px">问题或执行结果描述</th>
+							<th width="46px">结果</th>
+							<th width="53px">执行时间</th>
+						</thead>
+						<tbody id="tbody_testrecord">
+						</tbody>
+					</table>
+				</div>
+			</td>
+		</tr></tbody>
+	</table>	
+	<!--遮罩层：用于显示弹层后遮盖下面的页面元素-->
+	<div id="overlay" class="overlay"></div>	
+	<!--弹层：警告-->
+	<div id="form_alert" class="popwindow">
+		<div id="form_alert_title" class="pop_head">友好提醒</div>
+		<div class="pop_body" style="padding:10px 10px 10px 10px;">
+			<table cellspacing="0" cellpadding="0"><tbody>
+				<tr>
+					<td valign="bottom">
+						<img src="img/alert.jpg" style="margin-right: 10px;">
+					</td>
+					<td><span id="alert_mess"></span></td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center">
+						<button class="form_butt" href="javascript:void(0)" onclick="CloseForm('#form_alert','#overlay')">确定</button>
+					</td>
+				</tr>
+			</tbody></table>
+		</div>
+	</div>
+	<!--弹层：警告-->
+	<div id="form_confirm" class="popwindow">
+		<div id="form_confirm_title" class="pop_head">友好提醒</div>
+		<div class="pop_body">
+			<table cellspacing="0" cellpadding="0"><tbody>
+				<tr>
+					<td rowspan="2">
+						<img src="img/alarm.jpg" style="margin-right: 10px;">
+					</td>
+					<td id="warn_mess">删除报告将不可恢复，确定要继续删除？</td>
+				</tr>
+				<tr>
+					<td align="center">
+						<button href="javascript:void(0)" onclick="To_Del_TR()">确定</button>
+						<button href="javascript:void(0)" onclick="CloseForm('#form_confirm','#overlay')">放弃</button>
+					</td>
+				</tr>
+			</tbody></table>
+		</div>
+	</div>
+	</div><!--用于结束container-->
+</body>
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="js/comm.js"></script>
+<script type="text/javascript" src="js/TestReport.js"></script>
+</html>

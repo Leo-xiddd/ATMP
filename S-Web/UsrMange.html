@@ -1,0 +1,262 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>权限管理</title>
+	<link rel="stylesheet" type="text/css" href="css/comm.css">
+	<link rel="stylesheet" type="text/css" href="css/UsrMan.css">
+</head>
+
+<body>
+	<div id="container">
+	<table width="100%" cellspacing="0" cellpadding="0">
+	<tbody><tr>
+		<td width="70%" valign="top">
+			<!--功能按钮-->
+			<header>
+				<table width="100%" cellspacing="0" cellpadding="0"><tbody><tr>
+					<td width=40%>
+						<button id="ldap_conf" class="module_butt">LDAP配置</button>
+						<button class="module_butt" href="javascript:void(0)" onclick="ldap_sync()">LDAP同步</button>
+						<button id="Usr_add" class="module_butt">添加用户</button>
+						<button id="Usr_del" class="module_butt" style="background-color: #9F5B61">删除用户</button>
+					</td>
+					<td align='right'>
+						<select id="user_phase" type="text">
+							<option value="usrname">账号</option>
+							<option value="fullname">姓名</option>
+							<option value="role">角色</option>
+							<option value="dept">部门</option>
+							<option value="email">邮件</option>
+							<option value="mobile">手机</option>
+							<option value="type">类型</option>
+						</select>
+						<input id="user_filter" type="text">
+						<button class="module_butt" href="javascript:void(0)" onclick="user_filt()">查找</button>
+					</td>
+				</tr></tbody></table>	
+			</header>
+			<!--用户列表-->
+			<div id="Userlist">
+				<table width="100%" cellspacing="0" cellpadding="0" id="tab_usrlist">
+					<tbody>
+					<thead>
+						<th width="5%" style="border-left:1px solid #868A8D"><button id="id" class="th_butt">ID</button></th>
+						<th width="15%"><button id="usr" class="th_butt">账号</button></th>
+						<th width="10%"><button id="usrname" class="th_butt">姓名</button></th>
+						<th width="7%"><button id="fullname" class="th_butt">角色</button></th>
+						<th width="12%"><button id="dept" class="th_butt">部门</button></th>
+						<th width="20%"><button id="email" class="th_butt">邮件</button></th>
+						<th width="12%"><button id="mobile" class="th_butt">手机</button></th>
+						<th width="10%" class="cell_right"><button id="type" class="th_butt">类型</button></th>
+					</thead>
+					<tbody id="tbody_usrlist">
+					</tbody>
+				</table>
+			</div>
+			<table width="100%" cellspacing="0" cellpadding="0"><tbody><tr>
+				<td style="padding-top: 5px;padding-left: 10px;">
+					<span class="grey_text">与LDAP服务器最后一次同步时间为</span>
+					<span id="last_sync_time" class="grey_text"></span>
+				</td>
+				<td>
+					<div id="pages">
+						<button id="Fir_page" href="javascript:void(0)" onclick="Topage(1)">.</button>
+						<button id="Pre_page" href="javascript:void(0)" onclick="Nextpage('-')">.</button>
+						<span>第<span id="curr_page">1</span>/<span id="page_num">1</span>页</span>
+						<button id="Next_page" href="javascript:void(0)" onclick="Nextpage('+')">.</button>
+						<button id="Las_page" href="javascript:void(0)" onclick="Topage(0)">.</button>
+					</div>
+				</td>
+			</tr></tbody></table>
+			
+			
+		</td>
+		<td width="30%" valign="top" style="padding-left: 20px;">
+			<div class="block">
+			<!--功能按钮-->
+			<header>
+				<button class="head_butt head_btc_red" href="javascript:void(0)" onclick="open_form('#form_confirm','#overlay')">初始化权限表</button>	
+				<button class="head_butt head_btc_highlight" href="javascript:void(0)" onclick="SaveConf()">保存修改</button>
+				<button class="head_butt head_btc_highlight" href="javascript:void(0)" onclick="SelectAll()">选择全部</button>
+				<button class="head_butt head_btc_highlight" href="javascript:void(0)" onclick="ClearAll()">清除全部</button>
+			</header>
+			<div id="purviewlist">
+			<table id="tab_purviewlist" width="97%" cellspacing="0" cellpadding="0">
+				<tbody id="tbody_purviewlist">
+				</tbody>
+			</table>
+			</div>
+			</div>
+		</td>
+	</tr></tbody>
+	</table>					
+	</div><!--用于结束container-->
+	<!--遮罩层：用于显示弹层后遮盖下面的页面元素-->
+	<div id="overlay" class="overlay"></div>	
+	<div id="overlay2" class="overlay" style="z-index: 7;"></div>	
+	<!--弹层：Ldap配置-->	
+	<div id="form_ldap_conf" class="popwindow">
+		<div id="title_LDAPconf" class="pop_head">LDAP配置</div>
+		<div class="pop_body">
+			<table id="LDAPconf_table" width="100%" cellspacing="0" cellpadding="0"><tbody>
+				<tr>
+					<td width="20%"><label for="ldap_host">LDAP服务器</label></td>
+					<td><input id="ldap_host" type="text"></td>
+					<td width="10%" rowspan=5></td>
+					<td width="65%">
+						<button class="module_butt" id="butt_add_ldap_BaseDN">添加BaseDN</button>
+						<button class="module_butt" id="butt_del_ldap_BaseDN">删除BaseDN</button>
+					</td>
+				</tr>
+				<tr>
+					<td><label for="ldap_port">端口</label></td>
+					<td><input id="ldap_port" type="text"></td>
+					<td rowspan=4>
+						<select id="list_ldap_BaseDN" multiple="multiple" size="8" style="width:510px;"></select>
+					</td>
+				</tr>
+				<tr>
+					<td><label for="ldap_domain">基础域</label></td>
+					<td><input id="ldap_domain" type="text" placeholder="如@tech.cig.com.cn"></td>
+				</tr>
+				<tr>
+					<td><label for="ldap_admin">管理员账号</label></td>
+					<td><input id="ldap_admin" type="text"></td>
+				</tr>
+				<tr>
+					<td><label for="ldap_pwd">管理员密码</label></td>
+					<td><input id="ldap_pwd" type="password"></td>
+				</tr>
+			</tbody></table>
+			<div class="pop_bottom_butt">
+				<button href="javascript:void(0)" onclick="CloseForm('#form_ldap_conf','#overlay')">取消</button>
+				<button href="javascript:void(0)" onclick="ldap_save()">保存</button>				
+			</div>
+		</div>
+	</div>
+	
+	<!--弹层：用户信息，用于添加本地用户或者修改用户信息-->	
+	<div id="form_UserInfo" class="popwindow">
+		<div id="title_UserInfo" class="pop_head"></div>
+		<div class="pop_body">
+			<table id="userinfo_table" width="100%" cellspacing="0" cellpadding="0"><tbody>
+				<tr>
+					<td width="20%"><label for="usr_account">账号*</label></td>
+					<td><input id="usr_account" type="text"></td>
+				</tr>
+				<tr>
+					<td><label for="usr_pwd">密码*</label></td>
+					<td><input id="usr_pwd" type="text"></td>
+				</tr>
+				<tr>
+					<td><label for="usr_fullname">姓名*</label></td>
+					<td><input id="usr_fullname" type="text"></td>
+				</tr>
+				<tr>
+					<td><label for="usr_role">角色</label></td>
+					<td><select id="usr_role"><option>用户</option><option>管理员</option></select></td>
+				</tr>
+				<tr>
+					<td><label for="usr_dept">部门</label></td>
+					<td><input id="usr_dept" type="text"></td>
+				</tr>
+				<tr>
+					<td><label for="usr_mail">Email</label></td>
+					<td><input id="usr_mail" type="text"></td>
+				</tr>
+				<tr>
+					<td><label for="usr_mobile">手机</label></td>
+					<td><input id="usr_mobile" type="text"></td>
+				</tr>
+				<tr>
+					<td><label for="usr_type">类型</label></td>
+					<td><select id="usr_type"><option>本地账户</option><option>域账户</option></select></td>
+				</tr>
+			</tbody></table>
+			<div class="pop_bottom_butt">
+				<button href="javascript:void(0)" onclick="CloseForm('#form_UserInfo','#overlay')">取消</button>
+				<button id="UserInfo_save">保存</button>				
+			</div>
+		</div>
+	</div>
+	<!-- 二次弹层-输入BaseDN -->
+	<div id="form_input_BaseDN" class="popwindow" style="z-index: 9;">
+		<div id="title_input_BaseDN" class="pop_head">请输入导入用户的路径</div>
+		<div class="pop_body">
+			<table width="100%" cellspacing="0" cellpadding="0">
+			<tbody>
+				<tr><td><span>格式如"OU=质量管理部,OU=数据产品中心,OU=车慧,OU=新意互动"</span></td></tr>
+				<tr><td><input id="BaseDN" type="text" style="width: 500px;"></td></tr>
+				<tr><td align="center" class="pop_bottom_butt">
+					<button href="javascript:void(0)" onclick="CloseForm('#form_input_BaseDN','#overlay2')">取消</button>
+					<button href="javascript:void(0)" onclick="BaseDN_Save()">确定</button>
+				</td></tr>
+			</tbody>
+			</table>			
+			</div>
+		</div>
+	</div>
+	<!--弹层：警告-->
+	<div id="form_alert" class="popwindow">
+		<div id="form_alert_title" class="pop_head">友好提醒</div>
+		<div class="pop_body" style="padding:10px 10px 10px 10px;">
+			<table cellspacing="0" cellpadding="0"><tbody>
+				<tr>
+					<td valign="bottom">
+						<img src="img/alert.jpg" style="margin-right: 10px;">
+					</td>
+					<td><span id="alert_mess"></span></td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center">
+						<button class="form_butt" href="javascript:void(0)" onclick="CloseForm('#form_alert','#overlay')">确定</button>
+					</td>
+				</tr>
+			</tbody></table>
+		</div>
+	</div>
+	<!--弹层：警告-->
+	<div id="form_confirm" class="popwindow">
+		<div id="form_confirm_title" class="pop_head">友好提醒</div>
+		<div class="pop_body">
+			<table cellspacing="0" cellpadding="0"><tbody>
+				<tr>
+					<td rowspan="2">
+						<img src="img/alarm.jpg" style="margin-right: 10px;">
+					</td>
+					<td>请确认是否要初始化权限表，执行此操作<br>会导致部分用户操作权限出问题！</td>
+				</tr>
+				<tr>
+					<td align="center">
+						<button href="javascript:void(0)" onclick="InitConf()">确定</button>
+						<button href="javascript:void(0)" onclick="CloseForm('#form_confirm','#overlay')">取消</button>
+					</td>
+				</tr>
+			</tbody></table>
+		</div>
+	</div>
+	<!--弹层：提醒-->
+	<div id="form_alert" class="popwindow">
+		<div id="form_alert_title" class="pop_head">友好提醒</div>
+		<div class="pop_body" style="padding:10px 10px 10px 10px;">
+			<table cellspacing="0" cellpadding="0"><tbody>
+				<tr>
+					<td valign="bottom">
+						<img src="img/alert.jpg" style="margin-right: 10px;">
+					</td>
+					<td><span id="alert_mess"></span></td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center">
+						<button class="form_butt" href="javascript:void(0)" onclick="CloseForm('#form_alert','#overlay')">确定</button>
+					</td>
+				</tr>
+			</tbody></table>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="js/comm.js"></script>
+<script type="text/javascript" src="js/um.js"></script>
+</html>

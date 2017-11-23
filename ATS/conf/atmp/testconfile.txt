@@ -1,0 +1,2 @@
+﻿#本地测试脚本序列
+testScripts.eas.Userman.Login,0,如果执行失败测试结束

@@ -1,0 +1,99 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>帮助文档_用户使用说明</title>
+	<link rel="stylesheet" type="text/css" href="../css/comm.css">
+	<link rel="stylesheet" type="text/css" href="../css/help.css">
+</head>
+
+<body>
+	<div class="Charpter_body">
+		<a href="HelpDoc_2.html">返回上一级目录</a>
+		<hr>
+		<div style="height: 450px">
+			<p>
+				在ATMP中，测试脚本和测试集都是以项目为单位进行管理的，而为了能让用户在大量测试脚本中方便地进行管理、查找等操作，我们又引入了模块的概念。
+			项目和模块的管理在系统的'测试脚本'板块中，选择对应的顶部菜单进入测试脚本管理页，按如下步骤可以进行项目和模块的创建与管理。</p>
+			<div>
+				<table width="100%" cellspacing="0" cellpadding="0">
+					<tbody>
+						<tr>
+							<td width="20px"></td>
+							<td valign="top" style="padding-left: 5px;padding-right: 5px">
+								<div style="padding:8px;border:1px solid;width: 200px;height: 220px;">
+									<p style="line-height: 20px;text-indent: 0em;margin: 0px">
+										1.&nbsp;点击项目树上方的'项目管理'按钮，将打开项目管理弹层。
+									</p>
+									<div style="text-align: center">
+										<img src="img/2_1_1.png" width="184px" height="180px">
+									</div>
+								</div>
+							</td>
+							<td valign="top" style="padding-left: 5px;padding-right: 5px">
+								<div style="padding:8px;border:1px solid;width: 200px;height: 220px;">
+									<p style="line-height: 20px;text-indent: 0em;margin: 0px">
+										2.&nbsp;选中项目点击'-'按钮可删除该项目，点击'+'按钮则会打开新增项目弹层。
+									</p>
+									<div style="text-align: center">
+										<img src="img/2_1_2.png" width="184px" height="151px">
+									</div>
+								</div>
+							</td>
+							<td valign="top" style="padding-left: 5px;padding-right: 5px">
+								<div style="padding:8px;border:1px solid;width: 200px;height: 220px;">
+									<p style="line-height: 20px;text-indent: 0em;margin: 0px">
+										3.&nbsp;填写项目名称（可以是中文）和项目标签（必须是英文或数字），点击确定即可添加新的项目。
+									</p>
+									<div style="text-align: center">
+										<img src="img/2_1_3.png" width="184px" height="133px">
+									</div>
+								</div>
+							</td>
+							<td valign="top" style="padding-left: 5px;padding-right: 5px">
+								<div style="padding:8px;border:1px solid;width: 200px;height: 220px;">
+									<p style="line-height: 20px;text-indent: 0em;margin: 0px">
+										4.&nbsp;模块的删除和添加与项目相同，区别是必须为模块指定所属项目。
+									</p>
+									<div style="text-align: center">
+										<img src="img/2_1_4.png" width="184px" height="177px">
+									</div>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>						
+			<p style="margin-bottom: 0;line-height: 20px;"><b>注意事项：</b></p>
+			<ul style="margin-top: 0px;line-height: 0px;">
+				<li>上传测试脚本时必须指定项目和模块，这决定了脚本上传到服务器后保存的路径和脚本的类路径。</li>
+				<li>脚本所属的项目和模块的标签不能随意填写，一定要与本地开发环境中的脚本路径一致，如在“\DAD\userman\”目录下的脚本，上传时对应的项目标签就必须是“DAD”，模块标签是“userman”。</li>
+				<li>删除项目或模块时，项目或模块下不能有测试脚本和关联的测试集。</li>
+			</ul>
+		</div>
+		<div align="center">
+			<hr>
+			<a href="">首页</a>
+			|
+			<a href="">上一页</a>
+			|
+			<a href="HelpDoc_2_2.html">下一页</a>
+			|
+			<a href="HelpDoc_2_5.html">尾页</a>
+		</div>
+	</div>
+	<div id="popwindow">
+		
+	</div>
+</body>
+<script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript"> 
+	$(document).ready(function(){ 
+		$("li a",parent.document).css("background-color","transparent");
+		$("#HelpDoc_2_1",parent.document).css("background-color","#4691B4");
+		$("body").click(function(){
+			
+		});
+	});
+</script>
+</html>

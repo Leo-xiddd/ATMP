@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?><atmp-config>
+	<Browser>
+		<IE>D:\\java\\workspace\\ATS\\BrowerDriver\\IEDriverServer.exe</IE>
+		<Chrome>D:\\java\\workspace\\ATS\\BrowerDriver\\chromedriver.exe</Chrome>
+		<Firefox>*firefox C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe"</Firefox>
+	</Browser>
+	<DB_conf>
+		<IPaddr>192.168.56.15</IPaddr>
+		<Port>3306</Port>
+		<DBname>atmp</DBname>
+		<Usrname>atmpadmin</Usrname>
+		<Passwd>123</Passwd>
+	</DB_conf>
+	<LDAP_conf>
+		<host></host> 
+		<port></port> 
+		<domain></domain> 
+		<admin></admin> 	
+		<pwd></pwd>
+		<last_sync_time></last_sync_time>
+		<BaseDN>
+		</BaseDN>
+	</LDAP_conf>
+	<Mail_conf>
+		<smtpHost></smtpHost>
+		<account></account>
+		<passwd></passwd>
+		<tls></tls>
+		<ssl>false</ssl>
+		<port>25</port>
+		<auth>true</auth>
+	</Mail_conf>
+	</atmp-config>

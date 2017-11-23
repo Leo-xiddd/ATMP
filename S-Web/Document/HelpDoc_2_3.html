@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>帮助文档_用户使用说明</title>
+	<link rel="stylesheet" type="text/css" href="../css/comm.css">
+	<link rel="stylesheet" type="text/css" href="../css/help.css">
+</head>
+
+<body>
+	<div class="Charpter_body">
+		<a href="HelpDoc_2.html">返回上一级目录</a>
+		<hr>
+		<div style="height: 450px;">
+			<p>
+				<b>测试集</b>：是一组有顺序的，包含测试策略的测试脚本集合，用来让系统按照指定的逻辑和顺序来运行测试脚本。
+			</p>
+			<p>
+				<b>测试策略</b>：在创建测试集中为每个测试脚本设置的执行策略，主要指脚本执行失败的处理方案。脚本执行失败后的重复次数最多只能为9次。
+			</p>
+			<p>
+				<b>测试任务</b>：用一个测试集生成的临时脚本执行队列，用来执行具体的测试活动。每个测试任务与源测试集之间都不存在引用关系，所以测试集可以被反复创建测试任务
+			</p>
+			<p>
+				<b>环境配置参数</b>：是一组键值对，用来为测试脚本在测试过程中提供外部变量，作用与测试数据文件相同，具体被配置和调用方法请参考第4.1章节
+			</p>
+			<p>下面是创建一个测试集、配置然后生成测试任务的步骤。</p>
+			<div>
+				<table width="100%" cellspacing="0" cellpadding="0">
+					<tbody>
+						<tr>
+							<td width="20px"></td>
+							<td valign="top" style="padding-left: 5px;padding-right: 5px">
+								<div style="padding:8px;border:1px solid;width: 200px;height: 220px;">
+									<p style="line-height: 20px;text-indent: 0em;margin: 0px">
+										1.&nbsp;选择要创建测试集的项目，点击'创建测试集'按钮，输入新测试集名称并确定。
+									</p>
+									<div style="text-align: center">
+										<img src="img/2_3_1.png" width="184px" height="156px">
+									</div>
+								</div>
+							</td>
+							<td valign="top" style="padding-left: 5px;padding-right: 5px">
+								<div style="padding:8px;border:1px solid;width: 200px;height: 220px;">
+									<p style="line-height: 20px;text-indent: 0em;margin: 0px">
+										2.&nbsp;从右侧脚本目录中选择脚本添加到测试集中。
+									</p>
+									<div style="text-align: center">
+										<img src="img/2_3_2.png" width="184px" height="148px">
+									</div>
+								</div>
+							</td>
+							<td valign="top" style="padding-left: 5px;padding-right: 5px">
+								<div style="padding:8px;border:1px solid;height: 220px;">
+									<p style="line-height: 20px;text-indent: 0em;margin: 0px">
+										3.&nbsp;测试集中的脚本也可以移出，只需选中脚本并点击'从测试集删除'。
+									</p>
+									<div style="text-align: center">
+										<img src="img/2_3_3.png" width="425px" height="169.5px">
+									</div>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>				
+		</div>
+		<div align="center">
+			<hr>
+			<a href="HelpDoc_2_1.html">首页</a>
+			|
+			<a href="HelpDoc_2_2.html">上一页</a>
+			|
+			<a href="HelpDoc_2_4.html">下一页</a>
+			|
+			<a href="HelpDoc_2_5.html">尾页</a>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript"> 
+	$(document).ready(function(){ 
+		$("li a",parent.document).css("background-color","transparent");
+		$("#HelpDoc_2_3",parent.document).css("background-color","#4691B4");
+	});
+</script>
+</html>

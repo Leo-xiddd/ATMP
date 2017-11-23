@@ -1,0 +1,241 @@
+body{
+	margin:0px;
+	border:0px;
+	overflow-x : hidden;
+	background-color: #FFFFFF;
+}
+input{
+	font-family:'微软雅黑';	
+	font-size: 12px;
+	padding-left: 5px;
+}
+button{
+	font-family:'微软雅黑';	
+	font-size: 12px;
+}
+select{
+	font-family:'微软雅黑';	
+	font-size: 12px;
+	height: 22px;
+}
+header{
+	margin-bottom: 10px;
+}
+#container{
+	padding-top:17px;
+	width: 97%;
+	margin-right: auto;
+	margin-left: auto;
+}
+.pop_bottom_butt{
+	display:block;
+	position:relative;
+	top:15px;
+	text-align:center;
+}
+.pop_bottom_butt button{
+	margin-left:20px;
+	margin-right:20px;
+	margin-bottom: 10px;
+	width: 60px;
+	height:25px;
+	border-radius: 5px;
+}
+.form_butt{
+	width: 60px;
+	height:25px;
+	border-radius: 5px;
+	margin-top: 15px;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+#filter_value{
+	width:150px;
+	padding-left:4px;
+}
+#pages{
+	text-align:right;
+	font-family:'微软雅黑';
+	font-size:12px;
+	margin-top:10px;
+	margin-right:10px;
+}
+#Fir_page{
+	height: 22px;
+	width: 22px;
+	background-color: transparent;
+	background: url(../img/fpage.jpg);
+	color: transparent;
+	background-repeat:no-repeat;
+	background-size:14px 14px;
+	background-position:center;
+}
+#Pre_page{
+	height: 22px;
+	width: 22px;
+	background-color: transparent;
+	background: url(../img/ppage.jpg);
+	color: transparent;
+	background-repeat:no-repeat;
+	background-size:14px 14px;
+	background-position:center;
+}
+#Next_page{
+	height: 22px;
+	width: 22px;
+	background-color: transparent;
+	background: url(../img/npage.jpg);
+	color: transparent;
+	background-repeat:no-repeat;
+	background-size:14px 14px;
+	background-position:center;
+}
+#Las_page{
+	height: 22px;
+	width: 22px;
+	background-color: transparent;
+	background: url(../img/lpage.jpg);
+	color: transparent;
+	background-repeat:no-repeat;
+	background-size:14px 14px;
+	background-position:center;
+}
+#form_pm{
+	top:10%;
+	left:30%;
+}
+#form_mm{
+	top:10%;
+	left:30%;
+}
+#form_uploadTS{
+	top:10%;
+	left:30%;
+}
+#form_confirm{
+	top:15%;
+	left:35%;
+	line-height: 23px;
+}
+#form_TCF{
+	top:5%;
+	left:30%;
+}
+#form_TCF img{
+	margin-right:4px;
+	height: 16px;
+	width: 16px;
+}
+#form_TCF_add{
+	top:15%;
+	left:50%;
+}
+#form_TCF_add button{
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-top: 10px;
+}
+#form_confirm button{
+	border:2px outset;
+	border-radius: 5px;
+	margin-top: 15px;
+	margin-left: 10px;
+	margin-right: 10px;
+	width: 60px;
+	height: 25px;
+}
+#form_confirm_2{
+	top:15%;
+	left:35%;
+	line-height: 23px;
+}
+#form_confirm_2 button{
+	border:2px outset;
+	border-radius: 5px;
+	margin-top: 15px;
+	margin-left: 5px;
+	margin-right: 5px;
+	width: 70px;
+	height: 25px;
+}
+#treebox{
+	margin-top: 10px;
+	height:490px;
+	background-color:#FFFFFF;
+	padding:5px;
+	border:2px inset ;
+	overflow-y:scroll;
+	font-size: 12px;
+	font-family:'微软雅黑';
+}
+#tab_tslist{
+	margin-top: 10px;
+	font-size: 12px;
+	font-family:'微软雅黑';
+	border: 1px solid #868A8D;
+	border-left: 0; 
+}
+#tab_tslist th{
+	border-left: 1px solid #CFCFCF;	
+	background-color: #1B7098;
+	color: #FFFFFF;	
+	height: 25px;
+}
+#tbody_tslist tr{
+	height: 25px;
+	background-color: #FFFFFF;
+}
+#tbody_tslist td{
+	border-left: 1px solid #868A8D;	
+	border-top: 1px solid #868A8D;	
+	text-align: center;
+	padding: 3px;
+}
+#upl_box{
+	margin-top: 5px;
+	height: 250px;
+	border: 1.5px inset;
+	overflow-y: scroll;
+	padding-left: 1px;
+}
+#tab_filelist td{
+	border-bottom: 1px solid #CFCFCF;
+	border-left: 1px solid #CFCFCF;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+#file_selector{
+	display: none;
+}
+#Del_file{
+	width: 64px;
+	height: 22px;
+	margin-left: 15px;
+}
+#TCF_box{
+	margin-top: 5px;
+	padding-left: 1px;
+	border:1.5px inset #D1D1D1;
+	background-color: #FFFFFF;
+	overflow-y: scroll;
+	height: 250px;
+	padding-left: 1px;
+}
+#tbody_tcf td{
+	border-bottom: 1px solid #CFCFCF;
+	border-left: 1px solid #CFCFCF;
+	padding-left: 8px;
+	padding-right: 5px;
+}
+.tcf_key{
+	background-color: #F2F2F2;
+}
+.mult_select{
+	width:100%;
+	height: 110px;
+	padding-left: 5px;
+	margin-top: 5px;
+}
+#tbody_filelist tr{
+	height: 25px;
+}
